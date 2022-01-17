@@ -35,34 +35,29 @@
             }
         }
 
-        // renderScreen()
+        renderScreen()
 
-        // function renderScreen() {
-        //     for (playerId in game.players) {
-        //         const player = game.players[playerId]
-        //         // console.log(player)
-        //         context.fillStyle = 'black'
-        //         // console.log(context)
-        //         context.fillRect(player.x, player.y, 1, 1)
-        //     }
+        function renderScreen() {
+            // Limpa o canvas desenhando um quadrado branco na tela
+            context.fillStyle = 'white'
+            context.fillRect(0, 0, 10, 10)
 
-        //     for (fruitId in game.fruits) {
-        //         const fruit = game.fruits[fruitId]
-        //         context.fillStyle = 'green'
-        //         context.fillRect(fruit.x, fruit.y, 1, 1)
-        //     }
+            for (playerId in game.players) {
+                const player = game.players[playerId]
+                // console.log(player)
+                context.fillStyle = 'black'
+                // console.log(context)
+                context.fillRect(player.x, player.y, 1, 1)
+            }
 
-        //     requestAnimationFrame(renderScreen)
-        // }
+            for (fruitId in game.fruits) {
+                const fruit = game.fruits[fruitId]
+                context.fillStyle = 'green'
+                context.fillRect(fruit.x, fruit.y, 1, 1)
+            }
 
-        const color = 'red'
-        const positionX = 0
-        const positionY = 0
-        const width = 2
-        const height = 2
-
-        context.fillStyle = color
-        context.fillRect(positionX, positionY, width, height)
+            requestAnimationFrame(renderScreen)
+        }
     </script>
 </body>
 </html>
