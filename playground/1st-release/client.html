@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Game in JS</title>
+
+    <style>
+        #screen {
+            border: 10px solid #ccc;
+            height: 400px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="screen" width="10" height="10"></canvas>
+
+    <script>
+        const screen = document.getElementById('screen')
+        const context = screen.getContext('2d') // 2d ou 3d usando OpenGL
+
+        // Encapsular as infos do jogo num objeto chamado game
+        const game = {
+            players: {
+                'player1': { x: 1, y: 1 },
+                'player2': { x: 9, y: 9 }
+            },
+            fruits: {
+                'fruit1': { x: 3, y: 1 }
+            }
+        }
+
+        // renderScreen()
+
+        // function renderScreen() {
+        //     for (playerId in game.players) {
+        //         const player = game.players[playerId]
+        //         // console.log(player)
+        //         context.fillStyle = 'black'
+        //         // console.log(context)
+        //         context.fillRect(player.x, player.y, 1, 1)
+        //     }
+
+        //     for (fruitId in game.fruits) {
+        //         const fruit = game.fruits[fruitId]
+        //         context.fillStyle = 'green'
+        //         context.fillRect(fruit.x, fruit.y, 1, 1)
+        //     }
+
+        //     requestAnimationFrame(renderScreen)
+        // }
+
+        const color = 'red'
+        const positionX = 0
+        const positionY = 0
+        const width = 2
+        const height = 2
+
+        context.fillStyle = color
+        context.fillRect(positionX, positionY, width, height)
+    </script>
+</body>
+</html>
