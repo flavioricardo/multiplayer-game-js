@@ -23,7 +23,9 @@
     <script>
         const screen = document.getElementById('screen')
         const context = screen.getContext('2d') // 2d ou 3d usando OpenGL
+        const currentPlayerId = 'player1'
 
+        // Estrutura de dados
         // Encapsular as infos do jogo num objeto chamado game
         const game = {
             players: {
@@ -35,22 +37,55 @@
             }
         }
 
+        // Camada de input
+        document.addEventListener('keydown', handleKeyDown)
+
+        function handleKeyDown(event) {
+            const keyPressed = event.key
+            const player = game.players[currentPlayerId]
+
+            // X -> horizontal
+            if (keyPressed == 'ArrowLeft' && player.x - 1 >= 0) {
+                console.log('Left')
+                player.x = player.x - 1
+                return
+            }
+
+            if (keyPressed == 'ArrowRight' && player.x + 1 < screen.width) {
+                console.log('Right')
+                player.x = player.x + 1
+                return
+            }
+
+            // Y -> vertical
+            if (keyPressed == 'ArrowUp' && player.y - 1 >= 0) {
+                console.log('Up')
+                player.y = player.y - 1
+                return
+            }
+
+            if (keyPressed == 'ArrowDown' && player.y + 1 < screen.height) {
+                console.log('Down')
+                player.y = player.y + 1
+                return
+            }
+        }
+
         renderScreen()
 
+        // "Camada de apresentação"
         function renderScreen() {
             // Limpa o canvas desenhando um quadrado branco na tela
             context.fillStyle = 'white'
-            context.fillRect(0, 0, 10, 10)
+            context.clearRect(0, 0, 10, 10)
 
-            for (playerId in game.players) {
+            for (const playerId in game.players) {
                 const player = game.players[playerId]
-                // console.log(player)
                 context.fillStyle = 'black'
-                // console.log(context)
                 context.fillRect(player.x, player.y, 1, 1)
             }
 
-            for (fruitId in game.fruits) {
+            for (const fruitId in game.fruits) {
                 const fruit = game.fruits[fruitId]
                 context.fillStyle = 'green'
                 context.fillRect(fruit.x, fruit.y, 1, 1)
