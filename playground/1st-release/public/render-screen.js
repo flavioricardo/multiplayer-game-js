@@ -1,5 +1,10 @@
 // Presentation layer
-export default function renderScreen(screen, game, requestAnimationFrame) {
+export default function renderScreen(
+  screen,
+  game,
+  requestAnimationFrame,
+  currentPlayerId
+) {
   const context = screen.getContext("2d"); // 2d or 3d using OpenGL
 
   // Canvas cleanup
@@ -18,7 +23,15 @@ export default function renderScreen(screen, game, requestAnimationFrame) {
     context.fillRect(fruit.x, fruit.y, 1, 1);
   }
 
+  // Set a different color for the current player
+  const currentPlayer = game.state.players[currentPlayerId];
+
+  if (currentPlayerId && currentPlayer) {
+    context.fillStyle = "yellow";
+    context.fillRect(currentPlayer.x, currentPlayer.y, 1, 1);
+  }
+
   requestAnimationFrame(() => {
-    renderScreen(screen, game, requestAnimationFrame);
+    renderScreen(screen, game, requestAnimationFrame, currentPlayerId);
   });
 }
