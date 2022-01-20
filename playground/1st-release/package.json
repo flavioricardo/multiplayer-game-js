@@ -5,6 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "test": ""
   },
   "repository": {
@@ -20,5 +22,8 @@
   "dependencies": {
     "express": "^4.17.2",
     "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
